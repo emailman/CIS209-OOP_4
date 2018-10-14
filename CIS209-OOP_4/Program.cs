@@ -1,22 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace CIS209_OOP_4
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Object[] objects = {
+                                    new Tiger(),
+                                    new Chicken(),
+                                    new Orange(),
+                                    new Apple()
+                                };
+
+            foreach (var thing in objects)
+            {
+                if (thing is Animal)
+                    Console.WriteLine(((Animal)thing).Sound());
+
+                if (thing is IEdible) 
+                    Console.WriteLine(((IEdible)thing).HowToEat());
+            }
         }
     }
 }
